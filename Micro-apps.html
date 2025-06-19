@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All Apps - Quiblo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f7fb;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1.2px;
+      user-select: none;
+    }
+
+    /* Replaced with the rotating cube from first HTML */
+    .logo-cube {
+      width: 32px;
+      height: 32px;
+      margin-right: 12px;
+      transform-style: preserve-3d;
+      animation: spin 5s linear infinite;
+      position: relative;
+      transform-origin: center center;
+    }
+
+    .logo-cube div {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      background: #6aa5a0; /* brand color */
+      border: 2px solid #4a7a76;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    /* 6 faces of the cube */
+    .face-front  { transform: translateZ(16px); }
+    .face-back   { transform: rotateY(180deg) translateZ(16px); }
+    .face-right  { transform: rotateY(90deg) translateZ(16px); }
+    .face-left   { transform: rotateY(-90deg) translateZ(16px); }
+    .face-top    { transform: rotateX(90deg) translateZ(16px); }
+    .face-bottom { transform: rotateX(-90deg) translateZ(16px); }
+
+    @keyframes spin {
+      from {
+        transform: rotateX(0deg) rotateY(0deg);
+      }
+      to {
+        transform: rotateX(360deg) rotateY(360deg);
+      }
+    }
+
+    .nav-links a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #6aa5a0;
+      font-weight: bold;
+      font-size: 15px;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+
+    .nav-links a:hover {
+      color: #3a5a52;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 25px;
+      color: #4b7c74;
+      user-select: none;
+      position: relative;
+      padding-left: 35px;
+      font-weight: 700;
+    }
+
+    h2::before {
+      content: "📱";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 26px;
+      animation: bounce 2.5s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 24px;
+      flex-grow: 1;
+    }
+
+    .app-box {
+      background: #fff;
+      border: 2px solid #cde6e3;
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(106, 165, 160, 0.12);
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .app-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(75, 124, 116, 0.25);
+      border-color: #6aa5a0;
+      background: #e6f5f3;
+    }
+
+    .app-icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+      transition: transform 0.3s ease;
+      user-select: none;
+      animation: floatIcon 3s ease-in-out infinite;
+    }
+
+    .app-box:hover .app-icon {
+      transform: scale(1.2) rotate(8deg);
+      animation-play-state: paused;
+    }
+
+    @keyframes floatIcon {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #888;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+      user-select: none;
+      font-weight: 600;
+    }
+
+    .footer a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #888;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: #555;
+    }
+
+    @media (max-width: 520px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 18px;
+      }
+      .app-box {
+        padding: 22px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <div class="logo">
+      <div class="logo-cube">
+        <div class="face-front"></div>
+        <div class="face-back"></div>
+        <div class="face-right"></div>
+        <div class="face-left"></div>
+        <div class="face-top"></div>
+        <div class="face-bottom"></div>
+      </div>
+      Quiblo
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="Contact.html">Contact</a>
+    </div>
+  </div>
+
+  <h2>All Apps</h2>
+
+  <div class="grid">
+    <div class="app-box" onclick="location.href='#'">
+      <div class="app-icon" aria-label="Mood Diary">🙂</div>
+      <div>Mood Diary</div>
+    </div>
+    <div class="app-box" onclick="location.href='#'">
+      <div class="app-icon" aria-label="Water Buddy">💧</div>
+      <div>Water Buddy</div>
+    </div>
+    <div class="app-box" onclick="location.href='#'">
+      <div class="app-icon" aria-label="Focus Timer">⏱</div>
+      <div>Focus Timer</div>
+    </div>
+    <div class="app-box" onclick="location.href='#'">
+      <div class="app-icon" aria-label="Goal Steps">🎯</div>
+      <div>Goal Steps</div>
+    </div>
+    <div class="app-box" onclick="location.href='#'">
+      <div class="app-icon" aria-label="Quick Tasks">📋</div>
+      <div>Quick Tasks</div>
+    </div>
+    <div class="app-box" onclick="location.href='#'">
+      <div class="app-icon" aria-label="BreathEase">🌿</div>
+      <div>BreathEase</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 Quiblo &nbsp;|&nbsp;
+    <a href="https://www.tiktok.com/@tapcube" target="_blank" rel="noopener noreferrer">TikTok</a>
+    <a href="https://www.youtube.com/@tapcube" target="_blank" rel="noopener noreferrer">YouTube</a>
+  </div>
+
+</body>
+</html>
